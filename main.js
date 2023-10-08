@@ -2,6 +2,7 @@ import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
 import { Inspector } from '@babylonjs/inspector';
 import setupCameraScroll from './src/CameraScrollAnimation';
+import { MeshImport } from './src/MeshImporter';
 
 const canvas = document.getElementById('renderCanvas');
 
@@ -18,17 +19,14 @@ light.intensity = 2;
 
 const camera = new BABYLON.UniversalCamera('camera', new BABYLON.Vector3(-4, 1.2, 0.88), scene);
 camera.rotation.set(Math.PI / 8, Math.PI / 2, 0);
-// camera.attachControl(true);
+camera.attachControl(true);
 
-BABYLON.SceneLoader.ImportMesh(
-  '',
-  '/',
-  'mesh/TestTable.glb',
-  scene
-);
+//Import Room Mesh
+MeshImport(scene);
+
 
 //Camera scroll animation
-const cameraScroll = setupCameraScroll(canvas, scene, camera);
+// const cameraScroll = setupCameraScroll(canvas, scene, camera);
 
 
 engine.runRenderLoop(function () {
