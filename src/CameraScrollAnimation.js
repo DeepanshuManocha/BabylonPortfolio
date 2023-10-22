@@ -6,16 +6,24 @@ export default function setupCameraScroll(canvas, scene, camera) {
 
     const pointsOfInterest = [
         {
-            position: new BABYLON.Vector3(-4, 1.2, 0.88),
-            rotation: new BABYLON.Vector3(Math.PI / 8, Math.PI / 2, 0),
+            position: new BABYLON.Vector3(-5, 1.2, -1.314),
+            rotation: new BABYLON.Vector3(Math.PI / 27.69, Math.PI / 2, 0),
         },
         {
-            position: new BABYLON.Vector3(-2.8, 1.2, 0.88),
-            rotation: new BABYLON.Vector3(Math.PI / 8, Math.PI / 3, 0),
+            position: new BABYLON.Vector3(-1.1, 0.45, 0.8),
+            rotation: new BABYLON.Vector3(0, Math.PI / 2, 0),
         },
         {
-            position: new BABYLON.Vector3(-4, 1.2, 0.88),
+            position: new BABYLON.Vector3(-1.49, 1.5, -2.8),
             rotation: new BABYLON.Vector3(0, Math.PI, 0),
+        },
+        {
+            position: new BABYLON.Vector3(1.8, 1, -2.8),
+            rotation: new BABYLON.Vector3(Math.PI / 27.69, 2 * Math.PI / 1.333, 0),
+        },
+        {
+            position: new BABYLON.Vector3(-1.7, 1.35, -1.1),
+            rotation: new BABYLON.Vector3(0, 2 * Math.PI, 0),
         }
     ];
 
@@ -69,6 +77,8 @@ export default function setupCameraScroll(canvas, scene, camera) {
             }
         }
     }
+    // Add touch events for mobile
+    let touchStartY = 0;
     canvas.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
     });
