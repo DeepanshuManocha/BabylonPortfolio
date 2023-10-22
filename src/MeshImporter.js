@@ -2,15 +2,15 @@ import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
 
 // Function to create and apply an emissive material with a glow layer
-function applyEmissiveMaterial(childMesh, scene) {
+function applyEmissiveMaterial(childMesh, scene, color, intensity, blurKernelSize) {
     var emissiveMaterial = new BABYLON.StandardMaterial("emissiveMaterial", scene);
-    emissiveMaterial.emissiveColor = new BABYLON.Color3(0, 1, 0); // Set the color of the glow
+    emissiveMaterial.emissiveColor = color // Set the color of the glow
     childMesh.material = emissiveMaterial;
 
     var glowLayer = new BABYLON.GlowLayer("glow", scene);
     glowLayer.addIncludedOnlyMesh(childMesh);
-    glowLayer.intensity = 3.0; // Adjust the intensity as needed
-    glowLayer.blurKernelSize = 32; // Adjust the blur size as needed
+    glowLayer.intensity = intensity; // Adjust the intensity as needed
+    glowLayer.blurKernelSize = blurKernelSize; // Adjust the blur size as needed
 }
 
 // Function to create and apply a material with a texture
@@ -30,7 +30,7 @@ function applyVideoTextureMaterial(childMesh, scene, videoElement) {
 }
 
 // Function to create and apply a temporary material
-function applyTemporaryMaterial(childMesh, scene) {
+function applyTemporaryMaterial(childMesh, scene,) {
     const tempMaterial = new BABYLON.StandardMaterial("TempMaterial", scene);
     tempMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
     childMesh.material = tempMaterial;
@@ -40,7 +40,7 @@ export function MeshImport(scene) {
     BABYLON.SceneLoader.ImportMesh(
         '',
         '/',
-        'mesh/Room.glb',
+        'mesh/UpdatedRoom.glb',
         scene,
         function (meshes) {
             for (var i = 0; i < meshes.length; i++) {
@@ -50,7 +50,7 @@ export function MeshImport(scene) {
                     var childMesh = importedMesh.getChildren()[j];
 
                     if (childMesh.name === "LOGO") {
-                        applyEmissiveMaterial(childMesh, scene);
+                        applyEmissiveMaterial(childMesh, scene, new BABYLON.Color3(0, 1, 0), 3.0, 32);
                     }
 
                     if (childMesh.name === "Picture (1)") {
@@ -64,6 +64,10 @@ export function MeshImport(scene) {
 
                     if (childMesh.name === "Display (2)" || childMesh.name === "Display (1)") {
                         applyTemporaryMaterial(childMesh, scene);
+                    }
+
+                    if (childMesh.name === "Tagline") {
+                        applyEmissiveMaterial(childMesh, scene, new BABYLON.Color3(0, 1, 1), 3.0, 15);
                     }
                 }
             }

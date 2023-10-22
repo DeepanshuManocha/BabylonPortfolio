@@ -69,6 +69,8 @@ export default function setupCameraScroll(canvas, scene, camera) {
             }
         }
     }
+    // Add touch events for mobile
+    let touchStartY = 0;
     canvas.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
     });
