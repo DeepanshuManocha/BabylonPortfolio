@@ -86,7 +86,7 @@ export default function setupCameraScroll(canvas, scene, camera) {
     canvas.addEventListener('touchmove', (event) => {
         const touchEndY = event.touches[0].clientY;
         const deltaY = touchEndY - touchStartY;
-        handleScroll(deltaY);
+        handleScroll(-deltaY);
         touchStartY = touchEndY;
     });
 

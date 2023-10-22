@@ -24,6 +24,8 @@ export function SkillFrameImport(scene, meshPath, position, scale, texturePath) 
             // Add hover animations
             const skillFrameMesh = meshes[2];
 
+            var defaultPos = meshes[0].position.clone();
+
             // Add hover animations
             skillFrameMesh.actionManager = new BABYLON.ActionManager(scene);
             skillFrameMesh.actionManager.registerAction(
@@ -31,7 +33,7 @@ export function SkillFrameImport(scene, meshPath, position, scale, texturePath) 
                     BABYLON.ActionManager.OnPointerOverTrigger,
                     function () {
                         // Move the mesh slightly forward on hover
-                        skillFrameMesh.parent.position.z -= 0.1;
+                        skillFrameMesh.parent.position.z = defaultPos.z - 0.1;
                     }
                 )
             );
@@ -40,10 +42,13 @@ export function SkillFrameImport(scene, meshPath, position, scale, texturePath) 
                     BABYLON.ActionManager.OnPointerOutTrigger,
                     function () {
                         // Move the mesh back to its default position on mouse out
-                        skillFrameMesh.parent.position.z += 0.1;
+                        skillFrameMesh.parent.position.z = defaultPos.z;
                     }
                 )
             );
+            document.addEventListener("touchend", function (evt) {
+                skillFrameMesh.parent.position.z = defaultPos.z;
+            });
         }
     );
 }
