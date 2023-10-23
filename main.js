@@ -26,19 +26,19 @@ MeshImport(scene);
 
 //Skills Frame
 //Center 
-SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, 0.4, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/Luffy.jpg");
-SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -0.3, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/Luffy.jpg");
-SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.0, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/Luffy.jpg");
-SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.7, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/Luffy.jpg");
+SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, 0.4, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/GameDevelopmentLogo.jpg");
+SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -0.3, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/ARLogo.jpg");
+SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.0, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/VRLogo.jpg");
+SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.7, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/GamifiedSolutionsLogo.jpg");
 //Left
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.1, 0, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/Luffy.jpg");
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.1, -1.1, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/Luffy.jpg");
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.3, -1.4, 0), new BABYLON.Vector3(1.5, 1.5, -1), "/mesh/Textures/Luffy.jpg");
+SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.1, 0, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/PhotshopLogo.jpg");
+SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.1, -1.1, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/ThreeJsLogo.jpg");
+SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.3, -1.4, 0), new BABYLON.Vector3(1.5, 1.5, -1), " /mesh/Textures/BlenderLogo.jpg");
 
 //Right
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(0.8, 0, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/Luffy.jpg");
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.1, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/Luffy.jpg");
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(2.4, -1.4, 0), new BABYLON.Vector3(1.5, 1.5, -1), "/mesh/Textures/Luffy.jpg");
+SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(0.8, 0, 0), new BABYLON.Vector3(1, 1, -1), " /mesh/Textures/CSharpLogo.jpg");
+SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.1, 0), new BABYLON.Vector3(1, 1, -1), " /mesh/Textures/BabylonjsLogo.jpg");
+SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(2.4, -1.4, 0), new BABYLON.Vector3(1.5, 1.5, -1), " /mesh/Textures/UnityLogo.jpg");
 
 // Camera scroll animation
 const cameraScroll = setupCameraScroll(canvas, scene, camera);

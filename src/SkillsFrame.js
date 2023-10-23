@@ -18,7 +18,7 @@ export function SkillFrameImport(scene, meshPath, position, scale, texturePath) 
             var texture = new BABYLON.Texture(texturePath, scene);
             var material = new BABYLON.StandardMaterial("MaterialWithTexture", scene);
             material.diffuseTexture = texture;
-            // meshes[2].material = material;
+            meshes[2].material = material;
 
 
             // Add hover animations

@@ -22,7 +22,7 @@ export default function setupCameraScroll(canvas, scene, camera) {
             rotation: new BABYLON.Vector3(Math.PI / 27.69, 2 * Math.PI / 1.333, 0),
         },
         {
-            position: new BABYLON.Vector3(-1.7, 1.35, -1.1),
+            position: new BABYLON.Vector3(-1.7, 1.35, -2),
             rotation: new BABYLON.Vector3(0, 2 * Math.PI, 0),
         }
     ];
