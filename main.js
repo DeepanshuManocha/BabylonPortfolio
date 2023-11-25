@@ -15,6 +15,7 @@ const createScene = function () {
 
 const scene = createScene();
 const light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1, 0), scene);
+// light.groundColor = new BABYLON.Color3(1, 1, 1).toLinearSpace();
 light.intensity = 2;
 
 const camera = new BABYLON.UniversalCamera('camera', new BABYLON.Vector3(-5, 1.2, -1.314), scene);
@@ -26,19 +27,19 @@ MeshImport(scene);
 
 //Skills Frame
 //Center 
-SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, 0.4, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/GameDevelopmentLogo.jpg");
-SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -0.3, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/ARLogo.jpg");
-SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.0, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/VRLogo.jpg");
-SkillFrameImport(scene, 'mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.7, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/GamifiedSolutionsLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, 0.4, 0), new BABYLON.Vector3(1, 1, -1), "/Assets/Textures/T_GameDevelopmentLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -0.3, 0), new BABYLON.Vector3(1, 1, -1), "/Assets/Textures/T_ARLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.0, 0), new BABYLON.Vector3(1, 1, -1), "/Assets/Textures/T_VRLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/HorizontalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.7, 0), new BABYLON.Vector3(1, 1, -1), "/Assets/Textures/T_GamifiedSolutionsLogo.jpg");
 //Left
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.1, 0, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/PhotshopLogo.jpg");
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.1, -1.1, 0), new BABYLON.Vector3(1, 1, -1), "/mesh/Textures/ThreeJsLogo.jpg");
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.3, -1.4, 0), new BABYLON.Vector3(1.5, 1.5, -1), " /mesh/Textures/BlenderLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.1, 0, 0), new BABYLON.Vector3(1, 1, -1), "/Assets/Textures/T_PhotshopLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.1, -1.1, 0), new BABYLON.Vector3(1, 1, -1), "/Assets/Textures/T_ThreejsLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(-1.3, -1.4, 0), new BABYLON.Vector3(1.5, 1.5, -1), " /Assets/Textures/T_BlenderLogo.jpg");
 
 //Right
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(0.8, 0, 0), new BABYLON.Vector3(1, 1, -1), " /mesh/Textures/CSharpLogo.jpg");
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.1, 0), new BABYLON.Vector3(1, 1, -1), " /mesh/Textures/BabylonjsLogo.jpg");
-SkillFrameImport(scene, 'mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(2.4, -1.4, 0), new BABYLON.Vector3(1.5, 1.5, -1), " /mesh/Textures/UnityLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(0.8, 0, 0), new BABYLON.Vector3(1, 1, -1), " /Assets/Textures/T_CSharpLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(0.8, -1.1, 0), new BABYLON.Vector3(1, 1, -1), " /Assets/Textures/T_BabylonjsLogo.jpg");
+SkillFrameImport(scene, 'Assets/mesh/VerticalRectangleFrame.glb', new BABYLON.Vector3(2.4, -1.4, 0), new BABYLON.Vector3(1.5, 1.5, -1), " /Assets/Textures/T_UnityLogo.jpg");
 
 // Camera scroll animation
 const cameraScroll = setupCameraScroll(canvas, scene, camera);
