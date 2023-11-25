@@ -1,5 +1,6 @@
 import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
+import { OnHoverEnter, OnHoverExit, OnPointerClick } from './ActionManager';
 
 export function SkillFrameImport(scene, meshPath, position, scale, texturePath) {
     BABYLON.SceneLoader.ImportMesh(
@@ -24,29 +25,23 @@ export function SkillFrameImport(scene, meshPath, position, scale, texturePath) 
             // Add hover animations
             const skillFrameMesh = meshes[2];
 
-            var defaultPos = meshes[0].position.clone();
+            let defaultPos = meshes[0].position.clone();
 
             // Add hover animations
             skillFrameMesh.actionManager = new BABYLON.ActionManager(scene);
-            skillFrameMesh.actionManager.registerAction(
-                new BABYLON.ExecuteCodeAction(
-                    BABYLON.ActionManager.OnPointerOverTrigger,
-                    function () {
-                        // Move the mesh slightly forward on hover
-                        skillFrameMesh.parent.position.z = defaultPos.z - 0.1;
-                    }
-                )
-            );
-            skillFrameMesh.actionManager.registerAction(
-                new BABYLON.ExecuteCodeAction(
-                    BABYLON.ActionManager.OnPointerOutTrigger,
-                    function () {
-                        // Move the mesh back to its default position on mouse out
-                        skillFrameMesh.parent.position.z = defaultPos.z;
-                    }
-                )
-            );
+
+            OnHoverEnter(skillFrameMesh.actionManager, () => {
+                // Move the mesh slightly forward on hover
+                scene.hoverCursor = "default";
+                skillFrameMesh.parent.position.z = defaultPos.z - 0.1;
+            });
+            OnHoverExit(skillFrameMesh.actionManager, () => {
+                // Move the mesh back to its default position on mouse out
+                scene.hoverCursor = "pointer";
+                skillFrameMesh.parent.position.z = defaultPos.z;
+            });
             document.addEventListener("touchend", function (evt) {
+                scene.hoverCursor = "pointer";
                 skillFrameMesh.parent.position.z = defaultPos.z;
             });
         }

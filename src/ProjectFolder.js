@@ -1,5 +1,6 @@
 import * as BABYLON from '@babylonjs/core';
 import { CreateText } from './CreateText';
+import { OnHoverEnter, OnHoverExit, OnPointerClick } from './ActionManager';
 
 export function ProjectFolderImport(scene, position, text, projectParent, linkToOpen) {
     // Create a parent mesh
@@ -35,44 +36,31 @@ export function ProjectFolderImport(scene, position, text, projectParent, linkTo
     // SetParent
     parent.parent = projectParent;
 
-    var defaultPos = folderPlane.position.clone();
+    let defaultPos = folderPlane.position.clone();
+
+    folderPlane.actionManager = new BABYLON.ActionManager(scene);
 
     // Add hover animations
-    folderPlane.actionManager = new BABYLON.ActionManager(scene);
-    folderPlane.actionManager.registerAction(
-        new BABYLON.ExecuteCodeAction(
-            BABYLON.ActionManager.OnPointerOverTrigger,
-            function () {
-                // Move the mesh slightly forward on hover
-                folderPlane.position.z = defaultPos.z - 1;
-                folderPlane.position.x = defaultPos.x - 0.01;
-            }
-        )
-    );
-    folderPlane.actionManager.registerAction(
-        new BABYLON.ExecuteCodeAction(
-            BABYLON.ActionManager.OnPointerOutTrigger,
-            function () {
-                // Move the mesh back to its default position on mouse out
-                folderPlane.position.z = defaultPos.z;
-                folderPlane.position.x = defaultPos.x;
-            }
-        )
-    );
-    folderPlane.actionManager.registerAction(
-        new BABYLON.ExecuteCodeAction(
-            BABYLON.ActionManager.OnPickTrigger,
-            function () {
-                // Check if linkToOpen is not null or empty before opening in a new tab
-                if (linkToOpen && linkToOpen.trim() !== "") {
-                    window.open(linkToOpen, "_blank");
-                } else {
-                    console.log("Sorry, either the project video is currently unavailable, or I don't have the rights to share detailed project information.\n\nThank you for your understanding.");
-                    window.alert("Sorry, either the project video is currently unavailable, or I don't have the rights to share detailed project information.\n\nThank you for your understanding.");
-                }
-            }
-        )
-    );
+    OnHoverEnter(folderPlane.actionManager, () => {
+        // Move the mesh slightly forward on hover
+        folderPlane.position.z = defaultPos.z - 1;
+        folderPlane.position.x = defaultPos.x - 0.01;
+    });
+    OnHoverExit(folderPlane.actionManager, () => {
+        // Move the mesh back to its default position on mouse out
+        folderPlane.position.z = defaultPos.z;
+        folderPlane.position.x = defaultPos.x;
+    });
+    OnPointerClick(folderPlane.actionManager, () => {
+        // Check if linkToOpen is not null or empty before opening in a new tab
+        if (linkToOpen && linkToOpen.trim() !== "") {
+            window.open(linkToOpen, "_blank");
+        } else {
+            console.log("Sorry, either the project video is currently unavailable, or I don't have the rights to share detailed project information.\n\nThank you for your understanding.");
+            window.alert("Sorry, either the project video is currently unavailable, or I don't have the rights to share detailed project information.\n\nThank you for your understanding.");
+        }
+    });
+
     document.addEventListener("touchend", function (evt) {
         // Move the mesh back to its default position on touchend
         folderPlane.position.z = defaultPos.z;
