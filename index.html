@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/Assets/Icons/DeMan.jpg" />
+  <link rel="icon" type="image/svg+xml" href="/Assets/Icons//DeMan.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,22 +23,59 @@
     <a href="/Assets/Resume_Deepanshu_Manocha.pdf" download>
       <img src="/Assets/Icons/resume-button.png" alt="Download Resume" />
     </a>
-    <a class="coming-soon" onclick="showTooltip()">
+    <a onclick="ToggleFulScreen()">
+      <img src="/Assets/Icons/Fullscreen-button.png" id="fullscreen-button" />
+    </a>
+    <!-- <a class="coming-soon" onclick="showTooltip()">
       <img src="/Assets/Icons/Light-button.png" alt="Coming Soon" />
       <span class="tooltip" id="comingSoonTooltip">Coming soon!</span>
-    </a>
+    </a> -->
     <script>
-      function showTooltip() {
-        var tooltip = document.getElementById("comingSoonTooltip");
-        tooltip.style.visibility = "visible";
-        tooltip.style.opacity = "1";
-
-        // Automatically hide the tooltip after 3 seconds (adjust as needed)
-        setTimeout(function () {
-          tooltip.style.visibility = "hidden";
-          tooltip.style.opacity = "0";
-        }, 1000);
+      function ToggleFulScreen() {
+        var img = document.getElementById("fullscreen-button");
+        img.src = "/Assets/Icons/ExitFullscreen-button.png";
+        if (
+          !document.fullscreenElement && // alternative standard method
+          !document.mozFullScreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.msFullscreenElement
+        ) {
+          // current working methods
+          if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+          } else if (document.documentElement.msRequestFullscreen) {
+            document.documentElement.msRequestFullscreen();
+          } else if (document.documentElement.mozRequestFullScreen) {
+            document.documentElement.mozRequestFullScreen();
+          } else if (document.documentElement.webkitRequestFullscreen) {
+            document.documentElement.webkitRequestFullscreen(
+              Element.ALLOW_KEYBOARD_INPUT
+            );
+          }
+        } else {
+          img.src = "/Assets/Icons/Fullscreen-button.png";
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+        }
       }
+      // function showTooltip() {
+      // var tooltip = document.getElementById("comingSoonTooltip");
+      // tooltip.style.visibility = "visible";
+      // tooltip.style.opacity = "1";
+
+      // // Automatically hide the tooltip after 3 seconds (adjust as needed)
+      // setTimeout(function () {
+      //   tooltip.style.visibility = "hidden";
+      //   tooltip.style.opacity = "0";
+      // }, 1000);
+      // }
     </script>
   </div>
 

@@ -53,10 +53,10 @@ window.addEventListener('resize', function () {
 });
 
 // Inspector
-scene.debugLayer.show({ embedMode: false }).then(function () {
-  document.getElementById("scene-explorer-host").style.zIndex = "1000";
-  document.getElementById("inspector-host").style.zIndex = "1000";
-  document.getElementById("scene-explorer-host").style.position = "fixed";
-  document.getElementById("inspector-host").style.position = "fixed";
-});
-Inspector.Show(scene, {});
+// scene.debugLayer.show({ embedMode: false }).then(function () {
+//   document.getElementById("scene-explorer-host").style.zIndex = "1000";
+//   document.getElementById("inspector-host").style.zIndex = "1000";
+//   document.getElementById("scene-explorer-host").style.position = "fixed";
+//   document.getElementById("inspector-host").style.position = "fixed";
+// });
+// Inspector.Show(scene, {});

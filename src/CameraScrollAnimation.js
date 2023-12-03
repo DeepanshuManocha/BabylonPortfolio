@@ -3,6 +3,9 @@ import * as BABYLON from '@babylonjs/core';
 export default function setupCameraScroll(canvas, scene, camera) {
     let currentTargetIndex = 0;
     let scrolling = false;
+    const animationDuration = 2000; // 2 seconds
+    const frameRate = 60; // frames per second
+
 
     const pointsOfInterest = [
         {
@@ -29,40 +32,31 @@ export default function setupCameraScroll(canvas, scene, camera) {
 
     function moveToTarget(targetIndex) {
         if (targetIndex >= 0 && targetIndex < pointsOfInterest.length) {
+
             const target = pointsOfInterest[targetIndex];
 
-            // Calculate rotation animation
-            const rotationAnimation = new BABYLON.Animation('cameraRotation', 'rotation', 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
-            const rotationKeys = [];
-            rotationKeys.push({
-                frame: 0,
-                value: camera.rotation.clone()
-            });
-            rotationKeys.push({
-                frame: 100,
-                value: target.rotation.clone()
-            });
-            rotationAnimation.setKeys(rotationKeys);
-            camera.animations.push(rotationAnimation);
+            const startPosition = camera.position.clone();
+            const startRotation = camera.rotation.clone();
+            const startTime = Date.now();
 
-            // Calculate position animation
-            const positionAnimation = new BABYLON.Animation('cameraPosition', 'position', 60, BABYLON.Animation.ANIMATIONTYPE_VECTOR3, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT, new BABYLON.CircleEase);
-            const positionKeys = [];
-            positionKeys.push({
-                frame: 0,
-                value: camera.position.clone()
-            });
-            positionKeys.push({
-                frame: 100,
-                value: target.position.clone()
-            });
-            positionAnimation.setKeys(positionKeys);
-            camera.animations.push(positionAnimation);
+            const easeFunction = new BABYLON.ExponentialEase();
+            easeFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEOUT);
 
-            scene.beginAnimation(camera, 0, 100, false, 1.0, () => {
-                scrolling = false;
-                currentTargetIndex = targetIndex;
+            scene.registerBeforeRender(() => {
+                const elapsed = Date.now() - startTime;
+                const t = Math.min(1, elapsed / animationDuration);
+                scrolling = true;
+                camera.position = BABYLON.Vector3.Lerp(startPosition, target.position, easeFunction.ease(t));
+                camera.rotation = BABYLON.Vector3.Lerp(startRotation, target.rotation, easeFunction.ease(t));
+
+                if (t === 1) {
+                    currentTargetIndex = targetIndex;
+                    scene.unregisterBeforeRender(moveToTarget); // Unregister the function after the animation is complete
+                    scrolling = false;
+                }
             });
+
+            scene.getEngine().setHardwareScalingLevel(1 / (frameRate / scene.getEngine().getFps()));
         }
     }
 
@@ -70,13 +64,15 @@ export default function setupCameraScroll(canvas, scene, camera) {
         if (!scrolling) {
             if (deltaY > 0) {
                 moveToTarget(currentTargetIndex === pointsOfInterest.length - 1 ? 0 : currentTargetIndex + 1);
-                scrolling = true;
+                // scrolling = true;
             } else if (deltaY < 0 && currentTargetIndex !== 0) {
                 moveToTarget(currentTargetIndex - 1);
-                scrolling = true;
+                // scrolling = true;
             }
         }
     }
+
+
     // Add touch events for mobile
     let touchStartY = 0;
     canvas.addEventListener('touchstart', (event) => {
@@ -102,6 +98,6 @@ export default function setupCameraScroll(canvas, scene, camera) {
 
     return {
         moveToTarget,
-        handleScroll
+        handleScroll,
     };
 }
