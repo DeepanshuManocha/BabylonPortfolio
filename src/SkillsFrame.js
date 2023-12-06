@@ -1,12 +1,13 @@
 import * as BABYLON from '@babylonjs/core';
 import '@babylonjs/loaders/glTF';
 import { OnHoverEnter, OnHoverExit, OnPointerClick } from './ActionManager';
+import { getAssetPath } from './FilePath';
 
 export function SkillFrameImport(scene, meshPath, position, scale, texturePath) {
     BABYLON.SceneLoader.ImportMesh(
         '',
         '/',
-        meshPath,
+        getAssetPath(meshPath),
         scene,
         function (meshes) {
             // Set Position

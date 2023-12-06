@@ -5,6 +5,7 @@ import { SlideShowImport } from './SlideShow';
 import { CreateText } from './CreateText';
 import { OnHoverEnter, OnHoverExit } from './ActionManager';
 import { applyEmissiveMaterial, applyTextureMaterial, applyVideoTextureMaterial } from './MaterialHelper';
+import { getAssetPath } from './FilePath';
 
 // Function to setup project folders on a mesh
 function setupProjectFolders(mesh, scene) {
@@ -136,7 +137,7 @@ export function MeshImport(scene) {
     BABYLON.SceneLoader.ImportMesh(
         '',
         '/',
-        'Assets/mesh/UpdatedRoom.glb',
+        getAssetPath("mesh/UpdatedRoom.glb"),
         scene,
         function (meshes) {
             meshes.forEach(mesh => {
