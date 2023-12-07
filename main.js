@@ -23,8 +23,14 @@ const camera = new BABYLON.UniversalCamera('camera', new BABYLON.Vector3(-5, 1.2
 camera.rotation.set(Math.PI / 27.69, Math.PI / 2, 0);
 // camera.attachControl(true);
 
+engine.displayLoadingUI();
+
 //Import Room Mesh
-MeshImport(scene);
+MeshImport(scene, () => {
+  // document.getElementById("loadingScreen").style.display = "none";
+  engine.hideLoadingUI();
+  document.getElementById("social-buttons").style.display = "flex";
+});
 
 //Skills Frame
 //Center 

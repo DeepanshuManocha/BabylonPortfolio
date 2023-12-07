@@ -13,7 +13,8 @@
 </head>
 
 <body>
-  <div id="social-buttons" class="fixed right-0 bottom-0 flex flex-col justify-center items-center z-10">
+  <div id="social-buttons" class="fixed right-0 bottom-0 flex flex-col justify-center items-center z-10"
+    style="display: none;">
     <a href="https://www.linkedin.com/in/deepanshu-manocha-aaa620169/" target="_blank">
       <img src="/Assets/Icons/linkedin-button.png" alt="LinkedIn" />
     </a>
@@ -84,6 +85,10 @@
     <p>Scroll to Explore</p>
   </div>
 
+  <div id="loadingScreen" style="display: none;">
+    <!-- Add your loading screen content here -->
+    <p>Loading...</p>
+  </div>
   <canvas id="renderCanvas"></canvas>
   <script type="module" src="/main.js"></script>
   <video id="videoElement" autoplay loop>

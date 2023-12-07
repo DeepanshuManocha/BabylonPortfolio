@@ -133,18 +133,24 @@ function meshActions(childMesh, scene) {
 }
 
 // Main function to import meshes and apply actions based on mesh names
-export function MeshImport(scene) {
-    BABYLON.SceneLoader.ImportMesh(
+export function MeshImport(scene, hideLoadingUI) {
+    BABYLON.SceneLoader.ImportMeshAsync(
         '',
         '/',
         getAssetPath("mesh/UpdatedRoom.glb"),
-        scene,
-        function (meshes) {
-            meshes.forEach(mesh => {
-                mesh.getChildren().forEach(childMesh => {
-                    meshActions(childMesh, scene);
-                });
+        scene
+    ).then(result => {
+        result.meshes.forEach(mesh => {
+            mesh.getChildren().forEach(childMesh => {
+                meshActions(childMesh, scene);
             });
-        }
-    );
+        });
+
+        // Hide the loading UI once all meshes are processed
+        hideLoadingUI();
+    }).catch(error => {
+        console.error("An error occurred while importing the mesh:", error);
+        // You can also hide the loading UI here, or handle the error differently
+        hideLoadingUI();
+    });
 }
