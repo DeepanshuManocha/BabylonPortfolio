@@ -10,25 +10,25 @@ import { getAssetPath } from './FilePath';
 // Function to setup project folders on a mesh
 function setupProjectFolders(mesh, scene) {
     const projectData = [
-        { title: ["Employee of", "the month"], position: new BABYLON.Vector3(0, -0.65, -0.65), link: "https://youtu.be/g0CAMf-SrMk" },
-        { title: ["IOT App"], position: new BABYLON.Vector3(0, -0.65, -0.45), link: "https://youtu.be/-D93kXcDu3g" },
-        { title: ["Sophia"], position: new BABYLON.Vector3(0, -0.65, -0.25), link: null },
-        { title: ["Harvest", "Roti"], position: new BABYLON.Vector3(0, -0.65, -0.05), link: null },
-        { title: ["Water", "Rescue"], position: new BABYLON.Vector3(0, -0.65, 0.15), link: "https://drive.google.com/drive/folders/1_hCOP9CbLuvwHi7_9D6Kwrnls6nVA79o?usp=sharing" },
-        { title: ["Space", "Rash"], position: new BABYLON.Vector3(0, -0.65, 0.35), link: "https://github.com/DeepanshuManocha/Space-Rash" },
-        { title: ["Survivor"], position: new BABYLON.Vector3(0, -0.65, 0.55), link: null },
-        { title: ["Creator"], position: new BABYLON.Vector3(0, -0.65, 0.75), link: "https://youtu.be/CxlPZYUYvuA" },
-        { title: ["Old", "Engine"], position: new BABYLON.Vector3(0, -0.25, -0.65), link: "https://drive.google.com/drive/folders/1RaNl268GTW31Q-zdLbc3Vv9641sF_fOH" },
-        { title: ["Alien", "World"], position: new BABYLON.Vector3(0, -0.25, -0.45), link: null },
-        { title: ["Ar Dino", "Book"], position: new BABYLON.Vector3(0, -0.25, -0.25), link: "https://www.linkedin.com/posts/deepanshu-manocha-aaa620169_museums-pandemic-academic-activity-6736856774479024128-3Sxq/" },
-        { title: ["Ar Auto", "Expo"], position: new BABYLON.Vector3(0, -0.25, -0.05), link: "https://youtu.be/_XRbJGHXQRU" },
-        { title: ["Double S:", "Simulated", "Stereo"], position: new BABYLON.Vector3(0, -0.25, 0.15), link: "https://simulated-stereo.web.app/" },
-        { title: ["Covid", "Visualizer"], position: new BABYLON.Vector3(0, -0.25, 0.35), link: "https://github.com/surenderkumarrajput/Major-Hololens/tree/main" },
-        { title: ["Phonify", "life"], position: new BABYLON.Vector3(0, -0.25, 0.55), link: "https://www.youtube.com/watch?v=mlBRJ8PTDbY" }
+        { title: ["Employee of", "the month"], position: new BABYLON.Vector3(0, -0.65, -0.65), link: "https://youtu.be/g0CAMf-SrMk", description: null },
+        { title: ["IOT App"], position: new BABYLON.Vector3(0, -0.65, -0.45), link: "https://youtu.be/-D93kXcDu3g", description: null },
+        { title: ["Sophia"], position: new BABYLON.Vector3(0, -0.65, -0.25), link: null, description: "An AR application for the university’s Design Center to demonstrate the concept of AI and Sophia." },
+        { title: ["Harvest", "Roti"], position: new BABYLON.Vector3(0, -0.65, -0.05), link: null, description: "POC of an AR Application made for Harvest Brand." },
+        { title: ["Water", "Rescue"], position: new BABYLON.Vector3(0, -0.65, 0.15), link: "https://drive.google.com/drive/folders/1_hCOP9CbLuvwHi7_9D6Kwrnls6nVA79o?usp=sharing", description: null },
+        { title: ["Space", "Rash"], position: new BABYLON.Vector3(0, -0.65, 0.35), link: "https://github.com/DeepanshuManocha/Space-Rash", description: null },
+        { title: ["Survivor"], position: new BABYLON.Vector3(0, -0.65, 0.55), link: null, description: " A 3d Game i made to learn basic of 3D gaming, player movement, animation, etc" },
+        { title: ["Creator"], position: new BABYLON.Vector3(0, -0.65, 0.75), link: "https://youtu.be/CxlPZYUYvuA", description: null },
+        { title: ["Old", "Engine"], position: new BABYLON.Vector3(0, -0.25, -0.65), link: "https://drive.google.com/drive/folders/1RaNl268GTW31Q-zdLbc3Vv9641sF_fOH", description: null },
+        { title: ["Alien", "World"], position: new BABYLON.Vector3(0, -0.25, -0.45), link: null, description: "A game based on block chain where user can mine and do all other block chain activities by its e-currency i.e. Trillium" },
+        { title: ["Ar Dino", "Book"], position: new BABYLON.Vector3(0, -0.25, -0.25), link: "https://www.linkedin.com/posts/deepanshu-manocha-aaa620169_museums-pandemic-academic-activity-6736856774479024128-3Sxq/", description: null },
+        { title: ["Ar Auto", "Expo"], position: new BABYLON.Vector3(0, -0.25, -0.05), link: "https://youtu.be/_XRbJGHXQRU", description: null },
+        { title: ["Double S:", "Simulated", "Stereo"], position: new BABYLON.Vector3(0, -0.25, 0.15), link: "https://simulated-stereo.web.app/", description: null },
+        { title: ["Covid", "Visualizer"], position: new BABYLON.Vector3(0, -0.25, 0.35), link: "https://github.com/surenderkumarrajput/Major-Hololens/tree/main", description: null },
+        { title: ["Phonify", "life"], position: new BABYLON.Vector3(0, -0.25, 0.55), link: "https://www.youtube.com/watch?v=mlBRJ8PTDbY", description: null }
     ];
 
-    projectData.forEach(({ title, position, link }) => {
-        ProjectFolderImport(scene, position, title, mesh, link);
+    projectData.forEach(({ title, position, link, description }) => {
+        ProjectFolderImport(scene, position, title, mesh, link, description);
     });
 }
 
