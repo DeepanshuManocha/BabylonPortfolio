@@ -2,7 +2,7 @@ import * as BABYLON from '@babylonjs/core';
 import { CreateText } from './CreateText';
 import { OnHoverEnter, OnHoverExit, OnPointerClick } from './ActionManager';
 
-export function ProjectFolderImport(scene, position, text, projectParent, linkToOpen) {
+export function ProjectFolderImport(scene, position, text, projectParent, linkToOpen, description) {
     // Create a parent mesh
     const parent = new BABYLON.Mesh("parent", scene);
 
@@ -57,7 +57,7 @@ export function ProjectFolderImport(scene, position, text, projectParent, linkTo
             window.open(linkToOpen, "_blank");
         } else {
             console.log("Sorry, either the project video is currently unavailable, or I don't have the rights to share detailed project information.\n\nThank you for your understanding.");
-            window.alert("Sorry, either the project video is currently unavailable, or I don't have the rights to share detailed project information.\n\nThank you for your understanding.");
+            window.alert("Sorry, either the project video is currently unavailable, or I don't have the rights to share detailed project information.\n\nThank you for your understanding.\n\nProject Description: \n" + description);
         }
     });
 
